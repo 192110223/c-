@@ -1,0 +1,27 @@
+#include <iostream>
+#include <vector>
+
+int removeDuplicates(std::vector<int>& nums) {
+    if (nums.empty()) {
+        return 0; // Empty array has no duplicates
+    }
+
+    int k = 1; // Initialize the length of the unique elements
+
+    for (int i = 1; i < nums.size(); ++i) {
+        if (nums[i] != nums[i - 1]) {
+            nums[k++] = nums[i]; // Move unique elements to the front
+        }
+    }
+
+    return k;
+}
+
+// Custom Judge
+void assertArrays(std::vector<int>& nums, const std::vector<int>& expectedNums, int k) {
+    assert(k == expectedNums.size());
+
+    for (int i = 0; i < k; ++i) {
+        assert(nums[i] == expectedNums[i]);
+    }
+}
