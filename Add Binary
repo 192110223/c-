@@ -1,0 +1,36 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+string addBinary(string a, string b) {
+    string result = "";
+    int carry = 0;
+    int i = a.size() - 1, j = b.size() - 1;
+    
+    while (i >= 0 || j >= 0 || carry == 1) {
+        int sum = carry;
+        if (i >= 0) sum += a[i--] - '0';
+        if (j >= 0) sum += b[j--] - '0';
+        
+        result = to_string(sum % 2) + result;
+        carry = sum / 2;
+    }
+    
+    return result;
+}
+
+int main() {
+    string a = "1010";
+    string b = "1011";
+    
+    string sum = addBinary(a, b);
+    cout << "Binary sum: " << sum << endl;
+    
+    return 0;
+}
+In this program, the addBinary function takes two binary strings a and b as input and returns their sum as a binary string. It iterates through the strings from right to left, adding the corresponding bits along with any carry from the previous addition. The result is stored in the result string, and the final sum is returned. The main function demonstrates how to use this function by adding two binary numbers 1010 and 1011.
+
+
+
+
+
