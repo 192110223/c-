@@ -1,0 +1,31 @@
+#include <iostream>
+#include <vector>
+#include <unordered_map>
+
+int singleNumber(std::vector<int>& nums) {
+    std::unordered_map<int, int> freq;
+    
+    // Count frequency of each number
+    for (int num : nums) {
+        freq[num]++;
+    }
+    
+    // Find the number with frequency 1
+    for (auto pair : freq) {
+        if (pair.second == 1) {
+            return pair.first;
+        }
+    }
+    
+    return -1; // Error: Single number not found
+}
+
+int main() {
+    std::vector<int> nums = {4, 1, 2, 1, 2};
+    
+    int single = singleNumber(nums);
+    
+    std::cout << "The single number is: " << single << std::endl;
+    
+    return 0;
+}
