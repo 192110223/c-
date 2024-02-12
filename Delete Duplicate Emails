@@ -1,0 +1,31 @@
+#include <iostream>
+#include <unordered_set>
+#include <vector>
+#include <string>
+
+std::vector<std::string> deleteDuplicateEmails(const std::vector<std::string>& emails) {
+    std::unordered_set<std::string> uniqueEmails;
+    std::vector<std::string> result;
+
+    for (const std::string& email : emails) {
+        if (uniqueEmails.find(email) == uniqueEmails.end()) {
+            uniqueEmails.insert(email);
+            result.push_back(email);
+        }
+    }
+
+    return result;
+}
+
+int main() {
+    std::vector<std::string> emails = {"john@example.com", "mary@example.com", "john@example.com", "john@example.com", "alice@example.com"};
+
+    std::vector<std::string> uniqueEmails = deleteDuplicateEmails(emails);
+
+    std::cout << "Unique emails:" << std::endl;
+    for (const std::string& email : uniqueEmails) {
+        std::cout << email << std::endl;
+    }
+
+    return 0;
+}
