@@ -1,0 +1,26 @@
+include <iostream>
+#include <stack>
+#include <unordered_map>
+
+bool isValid(std::string s) {
+    std::stack<char> charStack;
+    std::unordered_map<char, char> bracketPairs = {
+        {')', '('},
+        {']', '['},
+        {'}', '{'}
+    };
+
+    for (char c : s) {
+        if (bracketPairs.find(c) != bracketPairs.end()) {
+            
+            char topElement = charStack.empty() ? '#' : charStack.top();
+            charStack.pop();
+
+            if (topElement != bracketPairs[c]) {
+                return false;
+            }
+        } else {
+           
+            charStack.push(c);
+        }
+    }
