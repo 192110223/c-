@@ -1,0 +1,26 @@
+#include <iostream>
+
+template<typename T>
+T findMax(const T* array, int size) {
+    T max = array[0];
+    for (int i = 1; i < size; ++i) {
+        if (array[i] > max) {
+            max = array[i];
+        }
+    }
+    return max;
+}
+
+int main() {
+    int intArray[] = {1, 5, 3, 9, 2};
+    int intMax = findMax(intArray, 5);
+    std::cout << "Maximum element in integer array: " << intMax << std::endl;
+    float floatArray[] = {1.5, 3.2, 2.7, 5.6, 4.1};
+    float floatMax = findMax(floatArray, 5);
+    std::cout << "Maximum element in float array: " << floatMax << std::endl;
+    double doubleArray[] = {2.5, 6.3, 1.8, 9.2, 4.7};
+    double doubleMax = findMax(doubleArray, 5);
+    std::cout << "Maximum element in double array: " << doubleMax << std::endl;
+
+    return 0;
+}
