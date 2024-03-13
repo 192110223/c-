@@ -1,0 +1,22 @@
+#include <iostream>
+double area(double length, double width) {
+    return length * width;
+}
+
+double area(double radius) {
+    return 3.14159 * radius * radius;
+}
+double area(double base, double height) {
+    return 0.5 * base * height;
+}
+
+int main() {
+    double length = 5.0, width = 3.0;
+    std::cout << "Area of Rectangle: " << area(length, width) << std::endl;
+    double radius = 4.0;
+    std::cout << "Area of Circle: " << area(radius) << std::endl;
+    double base = 6.0, height = 8.0;
+    std::cout << "Area of Triangle: " << area(base, height) << std::endl;
+
+    return 0;
+}
