@@ -1,0 +1,17 @@
+#include <iostream>
+const double PI = 3.14159;
+double calculateSphereVolume(double radius) {
+    return (4.0 / 3.0) * PI * radius * radius * radius;
+}
+int main() {
+    double radius;
+    std::cout << "Enter the radius of the sphere: ";
+    std::cin >> radius;
+    if (radius < 0) {
+        std::cerr << "Radius cannot be negative." << std::endl;
+        return 1; 
+    }
+    double volume = calculateSphereVolume(radius);
+    std::cout << "Volume of the sphere with radius " << radius << " is: " << volume << std::endl;
+    return 0; 
+}
