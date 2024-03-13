@@ -1,0 +1,42 @@
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+void generateCombinations(int n, int k, int start, vector<int>& combination, vector<vector<int>>& result) {
+    if (k == 0) {
+        result.push_back(combination);
+        return;
+    }
+
+    for (int i = start; i <= n - k + 1; ++i) {
+        combination.push_back(i);
+        generateCombinations(n, k - 1, i + 1, combination, result);
+        combination.pop_back();
+    }
+}
+
+vector<vector<int>> combine(int n, int k) {
+    vector<vector<int>> result;
+    vector<int> combination;
+    generateCombinations(n, k, 1, combination, result);
+    return result;
+}
+
+int main() {
+    int n = 4;
+    int k = 2;
+    
+    vector<vector<int>> combinations = combine(n, k);
+    
+    cout << "Combinations of " << k << " elements from " << n << " numbers:" << endl;
+    for (const auto& combo : combinations) {
+        cout << "[";
+        for (int num : combo) {
+            cout << num << " ";
+        }
+        cout << "]" << endl;
+    }
+    
+    return 0;
+}
