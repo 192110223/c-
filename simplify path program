@@ -1,0 +1,53 @@
+#include <iostream>
+#include <sstream>
+#include <stack>
+#include <vector>
+
+using namespace std;
+
+string simplifyPath(string path) {
+    stringstream ss(path);
+    string token;
+    stack<string> st;
+    
+
+    while (getline(ss, token, '/')) {
+        
+        if (token == "..") {
+            if (!st.empty()) {
+                st.pop();
+            }
+        }
+    
+        else if (token == "." || token.empty()) {
+            continue;
+        }
+        
+        else {
+            st.push(token);
+        }
+    }
+    
+    vector<string> dirs;
+    while (!st.empty()) {
+        dirs.push_back(st.top());
+        st.pop();
+    }
+    
+    if (dirs.empty()) {
+        return "/";
+    }
+    string simplifiedPath;
+    for (int i = dirs.size() - 1; i >= 0; --i) {
+        simplifiedPath += "/" + dirs[i];
+    }
+    
+    return simplifiedPath;
+}
+
+int main() {
+    string path = "/a/./b/../../c/";
+    cout << "Original Path: " << path << endl;
+    cout << "Simplified Path: " << simplifyPath(path) << endl;
+    return 0;
+}
